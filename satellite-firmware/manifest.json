@@ -1,6 +1,6 @@
 {
   "name": "Respeaker Satellite",
-  "version": "2024.11.1",
+  "version": "2024.11.2",
   "home_assistant_domain": "esphome",
   "new_install_prompt_erase": false,
   "builds": [
