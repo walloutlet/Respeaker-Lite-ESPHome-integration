@@ -7,7 +7,7 @@
     {
       "chipFamily": "ESP32-S3",
       "ota": {
-        "md5": "a8c56290512f5df19cc636d7983ec708",
+        "md5": "4f9a1ae30c3d4112420b877504f5b6a4",
         "path": "firmware.ota.bin",
         "release_url": "https://github.com/formatBCE/Respeaker-Lite-ESPHome-integration",
         "summary": "Test update"
