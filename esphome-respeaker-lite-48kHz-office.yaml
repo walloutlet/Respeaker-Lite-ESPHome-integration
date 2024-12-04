@@ -7,10 +7,10 @@ substitutions:
   voice_assist_error_phase_id: "11"
   voice_assist_muted_phase_id: "12"
 esphome:
-  name: respeaker-satellite
-  friendly_name: respeaker-satellite
+  name: respeaker-satellite-office
+  friendly_name: respeaker-satellite-office
   min_version: 2024.9.0
-  compile_process_limit: 1
+  compile_process_limit: 2
   platformio_options:
     board_build.flash_mode: dio
   on_boot:
@@ -85,8 +85,6 @@ external_components:
       type: git
       url: https://github.com/esphome/voice-kit
       ref: dev
-      #url: https://github.com/formatBCE/home-assistant-voice-pe
-      #ref: format_bce
     components:
       - aic3204
       - audio_dac
@@ -94,8 +92,14 @@ external_components:
       - micro_wake_word
       - microphone
       - nabu
-      - nabu_microphone
       - voice_assistant
+    refresh: 0s
+  - source:
+      type: git
+      url: https://github.com/mikey60/home-assistant-voice-pe
+      ref: dev
+    components:
+      - nabu_microphone
     refresh: 0s
   - source: github://pr#7605
     components: [ audio, i2s_audio, speaker]
@@ -376,7 +380,7 @@ microphone:
     i2s_din_pin: GPIO44
     adc_type: external
     pdm: false
-    sample_rate: 16000
+    sample_rate: 48000
     bits_per_sample: 32bit
     i2s_mode: secondary
     i2s_audio_id: i2s_input
@@ -387,7 +391,7 @@ microphone:
       
 speaker:
   - platform: i2s_audio
-    sample_rate: 16000
+    sample_rate: 48000
     i2s_mode: secondary
     i2s_dout_pin: GPIO43
     bits_per_sample: 32bit
@@ -402,7 +406,7 @@ media_player:
     internal: false
     audio_dac:
     speaker:
-    sample_rate: 16000
+    sample_rate: 48000
     volume_increment: 0.05
     volume_min: 0.2
     volume_max: 0.85
@@ -436,7 +440,8 @@ media_player:
 
 micro_wake_word:
   models:
-    - model: okay_nabu
+    - model: https://github.com/kahrendt/microWakeWord/releases/download/v2.1_models/hey_jarvis.json
+      id: hey_jarvis
     - model: https://github.com/kahrendt/microWakeWord/releases/download/stop/stop.json
       id: stop_word
       internal: true
